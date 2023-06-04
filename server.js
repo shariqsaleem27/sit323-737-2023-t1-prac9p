@@ -25,7 +25,7 @@ async function mongo() {
 }
 mongo();
 
-app.get('/documents', async (req, res) => 
+app.get('/documents', async (req, res) =>  
 {
   try {
     const collection = mongoClient.db('mydatabase').collection('mycollection');
@@ -36,7 +36,8 @@ app.get('/documents', async (req, res) =>
     res.status(500).send('Internal Server Error');
   }
 });
-app.delete('/documents/:id', async (req, res) => {
+app.delete('/documents/:id', async (req, res) => 
+{
   try {
     const collection = mongoClient.db('mydatabase').collection('mycollection');
     const documentId = new ObjectId(req.params.id);
@@ -48,12 +49,12 @@ app.delete('/documents/:id', async (req, res) => {
   }
 });
 
-app.get('/documents/:id', async (req, res) => {
+app.get('/documents/:id', async (req, res) => 
+{
   try {
     const collection = mongoClient.db('mydatabase').collection('mycollection');
     const documentId = new ObjectId(req.params.id);
     const document = await collection.findOne({ _id: documentId });
-
     if (document) {
       res.send(document);
     } else {
@@ -64,7 +65,8 @@ app.get('/documents/:id', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
-app.put('/documents/:id', async (req, res) => {
+app.put('/documents/:id', async (req, res) => 
+{
   try {
     const collection = mongoClient.db('mydatabase').collection('mycollection');
     const documentId = new ObjectId(req.params.id);
@@ -76,7 +78,8 @@ app.put('/documents/:id', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
-app.post('/documents', async (req, res) => {
+app.post('/documents', async (req, res) =>
+ {
   try {
     const collection = mongoClient.db('mydatabase').collection('mycollection');
     const newDocument = req.body;
