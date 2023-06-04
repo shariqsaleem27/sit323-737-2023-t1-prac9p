@@ -23,6 +23,7 @@ async function mongo() {
     console.error('Failed to connect', error);
   }
 }
+mongo();
 
 app.get('/documents', async (req, res) => 
 {
