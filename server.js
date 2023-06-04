@@ -33,7 +33,7 @@ app.get('/documents', async (req, res) =>
     res.json(documents);
   } catch (error) {
     console.error('Failed to fetch documents', error);
-    res.status(500).send('Internal Server Error');
+    res.status(500).send('Server Error');
   }
 });
 app.delete('/documents/:id', async (req, res) => 
@@ -45,7 +45,7 @@ app.delete('/documents/:id', async (req, res) =>
     res.status(204).send();
   } catch (error) {
     console.error('Fail to delete', error);
-    res.status(500).send('Internal Server Error');
+    res.status(500).send('Server Error');
   }
 });
 
@@ -62,7 +62,7 @@ app.get('/documents/:id', async (req, res) =>
     }
   } catch (error) {
     console.error('Fail to find', error);
-    res.status(500).send('Internal Server Error');
+    res.status(500).send('Server Error');
   }
 });
 app.put('/documents/:id', async (req, res) => 
@@ -75,7 +75,7 @@ app.put('/documents/:id', async (req, res) =>
     res.status(200).json(updatedDocument);
   } catch (error) {
     console.error('Fail to update', error);
-    res.status(500).send('Internal Server Error');
+    res.status(500).send('Server Error');
   }
 });
 app.post('/documents', async (req, res) =>
