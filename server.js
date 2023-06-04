@@ -3,8 +3,7 @@ const { MongoClient,objectId} = require('mongodb');
 const app = express();
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-const dbURI = 'mongodb://localhost:32000';
-const mongoClient = new MongoClient(dbURI);
+const mongoClient = new MongoClient('mongodb://localhost:32000');
 
 async function mongo() {
   try {
