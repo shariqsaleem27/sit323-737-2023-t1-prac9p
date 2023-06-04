@@ -25,9 +25,6 @@ async function mongo() {
 }
 
 mongo();
-app.get('/', (req, res) => {
-  res.send('Welcome !!');
-});
 
 app.get('/documents', async (req, res) => 
 {
