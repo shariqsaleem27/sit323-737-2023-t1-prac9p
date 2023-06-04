@@ -67,7 +67,7 @@ app.post('/documents', async (req, res) => {
     res.status(200).json(newDocument);
   } catch (error) {
     console.error('Failed to add document', error);
-    res.status(500).send('Internal Server Error');
+    res.status(500).send('Server Error');
   }
 });
 
@@ -96,7 +96,5 @@ app.delete('/documents/:id', async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
-  console.log('listening TO 3000');
-});
+app.listen(3000, () => {console.log('listening TO 3000'); });
 //end
