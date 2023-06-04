@@ -6,7 +6,7 @@ app.use(express.urlencoded({ extended: true }));
 const dbURI = 'mongodb://localhost:32000';
 const mongoClient = new MongoClient(dbURI);
 
-async function connectToMongoDB() {
+async function mongo() {
   try {
     await mongoClient.connect();
     console.log('Connected');
@@ -20,12 +20,11 @@ async function connectToMongoDB() {
     await collection.insertMany(documents);
     console.log('Documents added to database');
   } catch (error) {
-    console.error('Failed to connect to MongoDB', error);
+    console.error('Failed to connect', error);
   }
 }
 
-connectToMongoDB();
-
+mongo();
 app.get('/', (req, res) => {
   res.send('Welcome !!');
 });
