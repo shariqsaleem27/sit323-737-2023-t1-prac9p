@@ -60,7 +60,7 @@ app.get('/documents/:id', async (req, res) => {
       res.status(404).send(`Document with ID ${req.params.id} not found`);
     }
   } catch (error) {
-    console.error('Failed to fetch document', error);
+    console.error('Failed to find', error);
     res.status(500).send('Internal Server Error');
   }
 });
@@ -72,7 +72,7 @@ app.put('/documents/:id', async (req, res) => {
     const result = await collection.updateOne({ _id: documentId }, { $set: updatedDocument });
     res.status(200).json(updatedDocument);
   } catch (error) {
-    console.error('Failed to update document', error);
+    console.error('Failed to update', error);
     res.status(500).send('Internal Server Error');
   }
 });
@@ -83,7 +83,7 @@ app.post('/documents', async (req, res) => {
     const result = await collection.insertOne(newDocument);
     res.status(200).json(newDocument);
   } catch (error) {
-    console.error('Failed to add document', error);
+    console.error('Failed to add', error);
     res.status(500).send('Server Error');
   }
 });
