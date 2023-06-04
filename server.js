@@ -36,6 +36,17 @@ app.get('/documents', async (req, res) =>
     res.status(500).send('Internal Server Error');
   }
 });
+app.delete('/documents/:id', async (req, res) => {
+  try {
+    const collection = mongoClient.db('mydatabase').collection('mycollection');
+    const documentId = new ObjectId(req.params.id);
+    const result = await collection.deleteOne({ _id: documentId });
+    res.status(204).send();
+  } catch (error) {
+    console.error('Failed to delete document', error);
+    res.status(500).send('Internal Server Error');
+  }
+});
 
 app.get('/documents/:id', async (req, res) => {
   try {
@@ -53,19 +64,6 @@ app.get('/documents/:id', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
-
-app.post('/documents', async (req, res) => {
-  try {
-    const collection = mongoClient.db('mydatabase').collection('mycollection');
-    const newDocument = req.body;
-    const result = await collection.insertOne(newDocument);
-    res.status(200).json(newDocument);
-  } catch (error) {
-    console.error('Failed to add document', error);
-    res.status(500).send('Server Error');
-  }
-});
-
 app.put('/documents/:id', async (req, res) => {
   try {
     const collection = mongoClient.db('mydatabase').collection('mycollection');
@@ -78,16 +76,15 @@ app.put('/documents/:id', async (req, res) => {
     res.status(500).send('Internal Server Error');
   }
 });
-
-app.delete('/documents/:id', async (req, res) => {
+app.post('/documents', async (req, res) => {
   try {
     const collection = mongoClient.db('mydatabase').collection('mycollection');
-    const documentId = new ObjectId(req.params.id);
-    const result = await collection.deleteOne({ _id: documentId });
-    res.status(204).send();
+    const newDocument = req.body;
+    const result = await collection.insertOne(newDocument);
+    res.status(200).json(newDocument);
   } catch (error) {
-    console.error('Failed to delete document', error);
-    res.status(500).send('Internal Server Error');
+    console.error('Failed to add document', error);
+    res.status(500).send('Server Error');
   }
 });
 
