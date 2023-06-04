@@ -24,8 +24,6 @@ async function mongo() {
   }
 }
 
-mongo();
-
 app.get('/documents', async (req, res) => 
 {
   try {
